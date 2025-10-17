@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+.compensation-section {
+  padding: 10px 20px;
+  text-align: center;
+    background-color: #f3efef;
+      font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.section-heading {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.compensation-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+}
+
+.card .icon{
+    font-size: 0.5rem;
+}
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 1.4rem;
+  color: black;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .compensation-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 1.6rem;
+  }
+
+  .card p {
+    font-size: 1.4rem;
+  }
+
+  .section-heading {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compensation-section {
+    padding: 15px 10px;
+  }
+
+  .card h3 {
+    font-size: 1.4rem;
+  }
+
+  .card p {
+    font-size: 1.2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}

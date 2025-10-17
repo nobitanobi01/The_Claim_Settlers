@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+.footer-section {
+    background-color: #f3efef;
+    color: #333;
+    padding: 20px 200px;
+    font-family: "Nunito", sans-serif;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.footer-logo img {
+    width: 35%;
+    height: 35%;
+    margin-top: 45px;
+}
+
+.footer-social,
+.footer-sitemap {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-social h4,
+.footer-sitemap h4 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: grey;
+
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: grey;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.footer-sitemap .sitemap-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+}
+
+.footer-sitemap .sitemap-links a {
+    color: grey;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-bottom .legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-bottom .legal-links a {
+    color: grey;
+    text-decoration: none;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .footer-section {
+        padding: 20px 20px;
+        /* reduce horizontal padding */
+    }
+
+    .footer-top {
+        flex-direction: column;
+        /* stack sections vertically */
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-logo img {
+        width: 120px;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .footer-social h4,
+    .footer-sitemap h4 {
+        margin-left: 110px;
+
+    }
+
+    .footer-social,
+    .footer-sitemap {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .footer-sitemap .sitemap-links {
+        grid-template-columns: 1fr;
+        /* single column on mobile */
+        gap: 10px 0;
+    }
+
+    .social-icons {
+        justify-content: center;
+        /* center social icons */
+    }
+
+    .footer-bottom .legal-links {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

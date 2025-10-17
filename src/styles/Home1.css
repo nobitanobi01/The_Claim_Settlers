@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    /* background: url('../assets/bg.webp') no-repeat bottom left;
+    background-size: 300px auto;
+    background-position: bottom left; */
+    gap: 30px;
+
+}
+
+/* =========================
+   LEFT SECTION
+========================= */
+.home-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    color: #000;
+
+
+}
+
+.home-left h2 {
+    color: #d6181f;
+    margin-bottom: -35px;
+    font-size: 27px;
+    font-weight: 400;
+    font-family: 'Anton', sans-serif;
+}
+
+.home-left-heading {
+    font-family: 'Anton', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 54px;
+    color: #111;
+}
+
+.effect {
+    color: #111;
+    font-weight: 900;
+}
+
+.home-left-subheading {
+    font-size: 20px;
+    color: #111;
+    font-weight: 500;
+    line-height: 1.5;
+    font-family: "Nunito", sans-serif;
+
+}
+
+.home-left-subheading mark {
+    background: #fff500;
+    color: #111;
+    font-weight: 700;
+    padding: 0 3px;
+}
+
+/* =========================
+   RIGHT SECTION (FORM)
+========================= */
+.home-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+    font-family: "Nunito", sans-serif;
+
+}
+
+.home-form {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 550px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.home-form-heading {
+    background-color: rgb(237, 203, 12);
+    padding: 15px 15px;
+    text-align: center;
+}
+
+.home-form h3 {
+    color: black;
+    font-size: 30px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.subheading {
+    font-size: 16px;
+    color: black;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.home-form-heading-2 {
+    flex: 1;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #222;
+    margin-top: 15px;
+}
+
+.home-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.blue-btn {
+    flex: 1;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.blue-btn:hover {
+    background-color: #003f8a;
+}
+
+.green-btn {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.green-btn:hover {
+    background-color: #1f7f34;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 992px) {
+    .home-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-size: 400px auto;
+        background-position: bottom center;
+        padding: 100px 20px 60px;
+        margin-top: -90px;
+    }
+
+    .home-left {
+        padding: 20px;
+    }
+
+    .home-left-heading {
+        font-size: 32px;
+        margin-top: 50px;
+    }
+
+    .home-left-subheading {
+        font-size: 16px;
+    }
+
+    .home-form {
+        margin-top: -50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-container {
+        background-size: 300px auto;
+    }
+
+    .home-left-heading {
+        font-size: 26px;
+    }
+}
