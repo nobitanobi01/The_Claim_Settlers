@@ -11,8 +11,7 @@ const Home1 = () => {
                 </p> 
                 <p className='home-left-subheading'>
                     If your child plays <strong>Roblox</strong> and uses <strong>Discord</strong>, there's a chance online
-                    predators have tried to exploit them. Families may be eligible for
-                    <strong style={{ textDecoration: "underline" }}><mark> Significant Financial Compensation.</mark></strong>
+                    predators have tried to exploit them. Families may be eligible for <strong style={{ textDecoration: "underline" }}><mark>Significant Financial Compensation.</mark></strong>
                 </p>
             </div>
 
