@@ -93,9 +93,9 @@ const Home3 = () => {
                 <p>
                     Time limits may apply based on where you live and when the harm occurred, so it's important to act without delay.
                 </p>
-                <h3 className="sub-heading">How InjuryClaims.com Can Help</h3>
+                <h3 className="sub-heading">How ClaimSettler.com Can Help</h3>
                 <p>
-                    At InjuryClaims.com, we connect parents and guardians with attorneys who are actively filing lawsuits against Roblox and similar companies. Our legal partners understand how deeply this issue can affect families and are ready to help you hold the right people accountable.
+                    At ClaimSettler.com, we connect parents and guardians with attorneys who are actively filing lawsuits against Roblox and similar companies. Our legal partners understand how deeply this issue can affect families and are ready to help you hold the right people accountable.
                 </p>
                 <p>Take the first step toward protecting your child and learning your rights- <button className="cta-button" onClick={goToHome1}>Fill out our form for a FREE case review today!</button></p>
             </div>

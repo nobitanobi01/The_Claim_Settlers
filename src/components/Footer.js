@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Footer.css";
-import logo from '../assets/injury-claims-logo-no-text.svg';
+import logo from '../assets/logo.png';
 
 
 const Footer = () => {

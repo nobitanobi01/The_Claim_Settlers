@@ -13,9 +13,9 @@
 }
 
 .navbar-logo img {
-    height: 50px;
+    height: 90px;
     width: auto;
-
+    border-radius: 50px;
 }
 
 .navbar-text {
@@ -54,7 +54,9 @@
        display: none;
     }
     .navbar-logo img {
-    height: 45px;
+    height: 75px;
+    width: auto;
+    border-radius: 50px;
   }
 
   .navbar-btn {
