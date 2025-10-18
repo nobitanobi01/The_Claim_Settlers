@@ -95,14 +95,14 @@
 
 .home-form-heading {
     background-color: rgb(237, 203, 12);
-    padding: 15px 15px;
+    padding: 10px 10px;
     text-align: center;
 }
 
 .home-form h3 {
     color: black;
     font-size: 30px;
-    margin: 0;
+    margin: 5px;
     font-weight: 800;
 }
 
@@ -111,6 +111,7 @@
     color: black;
     margin-top: 6px;
     text-align: center;
+    margin-bottom: -2px;
 }
 
 .home-form-heading-2 {
@@ -127,6 +128,7 @@
     margin-bottom: 8px;
     color: #222;
     margin-top: 15px;
+    font-family: "Nunito", sans-serif;
 }
 
 .home-form select {
@@ -136,6 +138,11 @@
     border-radius: 6px;
     font-size: 1rem;
     margin-bottom: 15px;
+    font-family: "Nunito", sans-serif;
+}
+
+.home-form select option {
+    font-family: "Nunito", sans-serif;
 }
 
 .button-group {
@@ -163,7 +170,7 @@
 
 .green-btn {
     width: 100%;
-    background-color: #28a745;
+    background-color: green;
     color: white;
     border: none;
     padding: 14px;
@@ -175,7 +182,84 @@
 }
 
 .green-btn:hover {
-    background-color: #1f7f34;
+    background-color: rgb(8, 173, 8);
+}
+
+.blue-btn.selected {
+    background-color: orange;
+}
+
+.home-form-heading-2 input {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
+    color: #222;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.home-form-heading-2 input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 4px rgba(0, 86, 179, 0.3);
+    outline: none;
+}
+
+.home-form-heading-2 input::placeholder {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+/* Keep paragraph clean and readable */
+.home-form-heading-2 p {
+    font-size: 12px;
+    color: #333;
+    margin-top: 10px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* Contact form submit button */
+.home-form-heading-2 .green-btn {
+    background-color: green;
+    color: white;
+    padding: 14px;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.home-form-heading-2 .green-btn:hover {
+    background-color: rgb(8, 173, 8);
+}
+
+.error-message {
+    color: red;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 600;
+    animation: fadeIn 0.3s ease-in-out;
+    margin-bottom: -20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* =========================
