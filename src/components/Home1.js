@@ -39,17 +39,17 @@ const Home1 = () => {
                     </label>
                     <select required>
                         <option value="">Select an option</option>
-                        <option>Emotional trauma</option>
-                        <option>Depression or anxiety</option>
-                        <option>Self-harm</option>
-                        <option>Suicidal thoughts</option>
-                        <option>Substance abuse</option>
-                        <option>Sexual exploitation</option>
-                        <option>Physical injury</option>
-                        <option>Loss of education or opportunities</option>
-                        <option>PTSD</option>
-                        <option>Online harassment</option>
-                        <option>Other</option>
+                        <option>Rape or statutory rape</option>
+                        <option>Attempted rape / sexual assault</option>
+                        <option>Sexual assualt (touching, penetration, or oral)</option>
+                        <option>Sex trafficking</option>
+                        <option>Sextortion / sexual extortion</option>
+                        <option>Sent or received explicit images</option>
+                        <option>Grooming that caused harm </option>
+                        <option>Mental health issues (depression, PTSD, self-harm, substance abuse)</option>
+                        <option>Suicide or attempted suicide</option>
+                        <option>Physical or emotional harm / changes</option>
+                        <option>None of the above</option>
                     </select>
 
                     {/* Question 3 */}
