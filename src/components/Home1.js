@@ -36,8 +36,11 @@ const Home1 = () => {
     const handleContactSubmit = (e) => {
         e.preventDefault();
 
-        setShowPopup(true); 
-        setTimeout(() => setShowPopup(false), 2000);
+        setShowPopup(true);
+
+        setTimeout(() => {
+            window.location.href = window.location.origin + window.location.pathname;
+        }, 1000);
 
         const templateParams = {
             selectedPerson,
@@ -51,13 +54,12 @@ const Home1 = () => {
             date: new Date().toLocaleString(),
         };
 
-
         emailjs
             .send(
-                "service_jrvob9d",     //  EmailJS service ID
-                "template_0dutvno",    //  EmailJS template ID
+                "service_jrvob9d", // EmailJS service ID
+                "template_0dutvno", // Template ID
                 templateParams,
-                "brTOInCWBJlK4szm_"      //  EmailJS public key
+                "brTOInCWBJlK4szm_" // Public key
             )
             .then(
                 () => {
