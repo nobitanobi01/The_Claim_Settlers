@@ -1,94 +1,129 @@
 import React, { useState } from "react";
-import '../styles/Home1.css';
+import emailjs from "emailjs-com";
+import "../styles/Home1.css";
+
 const Home1 = () => {
-    const [selectedPerson, setSelectedPerson] = useState(""); // "self" or "child"
-    const [hasLawyer, setHasLawyer] = useState(""); // "yes" or "no"
-    const [selectedOption, setSelectedOption] = useState(""); // select option
-    const [showContactForm, setShowContactForm] = useState(false); // to toggle forms
+    const [selectedPerson, setSelectedPerson] = useState("");
+    const [hasLawyer, setHasLawyer] = useState("");
+    const [selectedOption, setSelectedOption] = useState("");
+    const [showContactForm, setShowContactForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPopup, setShowPopup] = useState(false);
+
+    // Contact form fields
+    const [contactData, setContactData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        state: "",
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Check if all fields are selected
         if (!selectedPerson || !hasLawyer || !selectedOption) {
-            setErrorMessage("⚠️ Please select all required option before continuing.");
+            setErrorMessage("⚠️ Please select all required options before continuing.");
             return;
         }
-        // Clear any previous error and move to contact form
         setErrorMessage("");
         setShowContactForm(true);
     };
 
+    const handleContactChange = (e) => {
+        setContactData({ ...contactData, [e.target.name]: e.target.value });
+    };
+
+    const handleContactSubmit = (e) => {
+        e.preventDefault();
+
+        setShowPopup(true); 
+        setTimeout(() => setShowPopup(false), 2000);
+
+        const templateParams = {
+            selectedPerson,
+            selectedOption,
+            hasLawyer,
+            firstName: contactData.firstName,
+            lastName: contactData.lastName,
+            email: contactData.email,
+            phone: contactData.phone,
+            state: contactData.state,
+            date: new Date().toLocaleString(),
+        };
+
+
+        emailjs
+            .send(
+                "service_jrvob9d",     //  EmailJS service ID
+                "template_0dutvno",    //  EmailJS template ID
+                templateParams,
+                "brTOInCWBJlK4szm_"      //  EmailJS public key
+            )
+            .then(
+                () => {
+
+                },
+                (error) => {
+                    console.error("Email send failed:", error);
+                }
+            );
+    };
+
     return (
-        <div className='home-container'>
-            <div className='home-left'>
+        <div className="home-container">
+            <div className="home-left">
                 <h2>Attention: Roblox & Discord Abuse Victims</h2>
-                <p className='home-left-heading'>
-                    Online Predators Are Targeting Kids Who Play RobloxUsing Discord-
-                    Could Your Child Be at  Risk?
+                <p className="home-left-heading">
+                    Online Predators Are Targeting Kids Who Play Roblox Using Discord –
+                    Could Your Child Be at Risk?
                 </p>
-                <p className='home-left-subheading'>
-                    If your child plays <strong>Roblox</strong> and uses <strong>Discord</strong>, there's a chance online
-                    predators have tried to exploit them. Families may be eligible for <strong style={{ textDecoration: "underline" }}><mark>Significant Financial Compensation.</mark></strong>
+                <p className="home-left-subheading">
+                    If your child plays <strong>Roblox</strong> and uses <strong>Discord</strong>,
+                    families may be eligible for <strong><mark>Significant Financial Compensation.</mark></strong>
                 </p>
             </div>
 
             <div className="home-right">
-                <form className="home-form" onSubmit={handleSubmit}>
+                <form className="home-form" onSubmit={!showContactForm ? handleSubmit : handleContactSubmit}>
                     {!showContactForm ? (
                         <>
-                            {/* Step 1: Qualification Questions */}
                             <div className="home-form-heading">
                                 <h3>You May Qualify for Compensation</h3>
                                 <p className="subheading">
                                     If Qualified, Get an immediate Free <strong>Phone</strong> Consultation
                                 </p>
                             </div>
-                            {errorMessage && (
-                                    <p className="error-message">{errorMessage}</p>
-                                )}
+
+                            {errorMessage && <p className="error-message">{errorMessage}</p>}
+
                             <div className="home-form-heading-2">
-                                {/* Question 1 */}
-                                <label>
-                                    Did you or a child suffer sexual exploitation or sextortion through Roblox?
-                                </label>
+                                <label>Did you or a child suffer sexual exploitation or sextortion through Roblox?</label>
                                 <div className="button-group">
                                     <button
                                         type="button"
                                         className={`blue-btn ${selectedPerson === "self" ? "selected" : ""}`}
                                         onClick={() => setSelectedPerson("self")}
-
                                     >
-                                        {selectedPerson === "self" && (
-                                            <i className="fas fa-check" style={{ marginRight: "8px" }}></i>
-                                        )}
-                                        My Self
+                                        {selectedPerson === "self" && <i className="fas fa-check" style={{ marginRight: "8px" }}></i>}
+                                        Myself
                                     </button>
                                     <button
                                         type="button"
                                         className={`blue-btn ${selectedPerson === "child" ? "selected" : ""}`}
                                         onClick={() => setSelectedPerson("child")}
-
                                     >
-                                        {selectedPerson === "child" && (
-                                            <i className="fas fa-check" style={{ marginRight: "8px" }}></i>
-                                        )}
+                                        {selectedPerson === "child" && <i className="fas fa-check" style={{ marginRight: "8px" }}></i>}
                                         My Child
                                     </button>
                                 </div>
 
-                                {/* Question 2 */}
-                                <label>
-                                    Which of the following best describes the most serious injury you experienced as a result of the abuse?
-                                </label>
+                                <label>Which of the following best describes the most serious injury you experienced?</label>
                                 <select
                                     required
                                     value={selectedOption}
                                     onChange={(e) => setSelectedOption(e.target.value)}
                                 >
-                                    <option value="" disabled>
-                                        Select an option
-                                    </option>
+                                    <option value="" disabled>Select an option</option>
                                     <option>Rape or statutory rape</option>
                                     <option>Attempted rape / sexual assault</option>
                                     <option>Sexual assault (touching, penetration, or oral)</option>
@@ -96,48 +131,35 @@ const Home1 = () => {
                                     <option>Sextortion / sexual extortion</option>
                                     <option>Sent or received explicit images</option>
                                     <option>Grooming that caused harm</option>
-                                    <option>
-                                        Mental health issues (depression, PTSD, self-harm, substance abuse)
-                                    </option>
+                                    <option>Mental health issues (depression, PTSD, etc.)</option>
                                     <option>Suicide or attempted suicide</option>
                                     <option>Physical or emotional harm / changes</option>
                                     <option>None of the above</option>
                                 </select>
 
-                                {/* Question 3 */}
                                 <label>Do you currently have a lawyer representing your claim?</label>
                                 <div className="button-group">
                                     <button
                                         type="button"
                                         className={`blue-btn ${hasLawyer === "yes" ? "selected" : ""}`}
                                         onClick={() => setHasLawyer("yes")}
-
                                     >
-                                        {hasLawyer === "yes" && (
-                                            <i className="fas fa-check" style={{ marginRight: "8px" }}></i>
-                                        )}
                                         Yes
                                     </button>
                                     <button
                                         type="button"
                                         className={`blue-btn ${hasLawyer === "no" ? "selected" : ""}`}
                                         onClick={() => setHasLawyer("no")}
-
                                     >
-                                        {hasLawyer === "no" && (
-                                            <i className="fas fa-check" style={{ marginRight: "8px" }}></i>
-                                        )}
                                         No
                                     </button>
                                 </div>
-                                <button type="submit" className="green-btn">
-                                    Do I Qualify
-                                </button>
+
+                                <button type="submit" className="green-btn">Do I Qualify</button>
                             </div>
                         </>
                     ) : (
                         <>
-                            {/* Step 2: Contact Information Form */}
                             <div className="home-form-heading">
                                 <h3>Your Case Results Are Ready!</h3>
                                 <p className="subheading">
@@ -146,39 +168,27 @@ const Home1 = () => {
                             </div>
 
                             <div className="home-form-heading-2">
-                                <input type="text" required placeholder="Enter your first name" />
-
-                                <input type="text" required placeholder="Enter your last name" />
-
-                                <input type="email" required placeholder="Enter your email" />
-
-                                <input type="tel" required placeholder="Enter your phone number" />
-
-                                <input type="text" required placeholder="Enter your state" />
-
-                                <p style={{ fontSize: "11px", color: "black", marginTop: "10px", lineHeight: "1.5" }}>
-                                    By clicking the 'Get Your Results Now!'button below, you consent
-                                    to receive automated phone calls or text messages, made by or on behalf of Claim Settlers
-                                    and its<strong style={{ color: "blue" }}> Partners </strong>to the phone number provided above, regarding your potential
-                                    case, legal services, and promotions/offers. Your consent is not a condition of any
-                                    purchase of any goods or services. By clicking on the
-                                    'Get Your Results Now!' below, you confirm you have read and agree
-                                    to abide by our <strong style={{ color: "blue" }}>Terms & Conditions</strong> (including resolving all disputes through binding
-                                    individual arbitration and including the E-SIGN consent) and our<strong style={{ color: "blue" }}> Privacy </strong> <strong style={{ color: "blue" }}>Policy</strong>. You
-                                    understand there may be a charge by your wireless carrier for such communications. To
-                                    unsubscribe at any time, reply "STOP". Message & Data rates may apply.
-                                </p>
+                                <input name="firstName" type="text" required placeholder="Enter your first name" onChange={handleContactChange} />
+                                <input name="lastName" type="text" required placeholder="Enter your last name" onChange={handleContactChange} />
+                                <input name="email" type="email" required placeholder="Enter your email" onChange={handleContactChange} />
+                                <input name="phone" type="tel" required placeholder="Enter your phone number" onChange={handleContactChange} />
+                                <input name="state" type="text" required placeholder="Enter your state" onChange={handleContactChange} />
 
                                 <button type="submit" className="green-btn">
-                                    Get Your Results Now!
+                                    Connect with Us!
                                 </button>
                             </div>
                         </>
                     )}
                 </form>
             </div>
+            {showPopup && (
+                <div className="popup-message">
+                    Message Submitted. Our team will connect you soon.
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default Home1
+export default Home1;

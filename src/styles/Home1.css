@@ -262,6 +262,46 @@
     }
 }
 
+.popup-message {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+    background-color: #28a745;
+    color: white;
+    padding: 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    z-index: 9999;
+    animation: fadeInOut 2s ease-in-out;
+    font-family: "Nunito", sans-serif;
+    height: 35px;
+    width: auto;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
