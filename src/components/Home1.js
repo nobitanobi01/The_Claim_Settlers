@@ -35,12 +35,7 @@ const Home1 = () => {
 
     const handleContactSubmit = (e) => {
         e.preventDefault();
-
         setShowPopup(true);
-
-        setTimeout(() => {
-            window.location.href = window.location.origin + window.location.pathname;
-        }, 1000);
 
         const templateParams = {
             selectedPerson,
@@ -63,10 +58,13 @@ const Home1 = () => {
             )
             .then(
                 () => {
-
+                    window.location.href =
+                        window.location.origin + window.location.pathname;
+                  
                 },
                 (error) => {
-                    console.error("Email send failed:", error);
+                    alert("Email send failed:", error);
+                    setShowPopup(false);
                 }
             );
     };
@@ -187,6 +185,8 @@ const Home1 = () => {
             {showPopup && (
                 <div className="popup-message">
                     Message Submitted. Our team will connect you soon.
+                    <br />
+                    Redirecting
                 </div>
             )}
         </div>
