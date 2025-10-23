@@ -9,9 +9,9 @@ const Home1 = () => {
     const [showContactForm, setShowContactForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [showPopup, setShowPopup] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false); // ✅ new state
+    const [isSubmitting, setIsSubmitting] = useState(false); 
 
-    // Contact form fields
+   
     const [contactData, setContactData] = useState({
         firstName: "",
         lastName: "",
@@ -37,7 +37,6 @@ const Home1 = () => {
     const handleContactSubmit = (e) => {
         e.preventDefault();
 
-        // ✅ Disable the button immediately
         setIsSubmitting(true);
 
         const templateParams = {
@@ -60,10 +59,8 @@ const Home1 = () => {
                 "brTOInCWBJlK4szm_" // Public key
             )
             .then(() => {
-                // ✅ Show popup after successful send
                 setShowPopup(true);
 
-                // ✅ Wait briefly, then reload
                 setTimeout(() => {
                     window.location.href = window.location.origin + window.location.pathname;
                 }, 1000);
@@ -71,7 +68,7 @@ const Home1 = () => {
             .catch((error) => {
                 console.error("Email send failed:", error);
                 alert("Failed to send message. Please try again.");
-                setIsSubmitting(false); // re-enable if failed
+                setIsSubmitting(false); 
             });
     };
 
