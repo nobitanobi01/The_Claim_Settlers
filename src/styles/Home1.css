@@ -275,7 +275,7 @@
     z-index: 9999;
     animation: fadeInOut 2s ease-in-out forwards;
     font-family: "Nunito", sans-serif;
-    height: 45px;
+    height: 30px;
     width: auto;
 }
 
@@ -331,6 +331,17 @@
     .home-form {
         margin-top: -50px;
     }
+
+    .popup-message {
+    position: fixed;
+    top: 40px;
+    left: 30%;
+    z-index: 9999;
+    font-family: "Nunito", sans-serif;
+    height: auto;
+    width: auto;
+}
+
 }
 
 @media (max-width: 576px) {
@@ -341,4 +352,15 @@
     .home-left-heading {
         font-size: 26px;
     }
+
+    .popup-message {
+    position: fixed;
+    top: 40px;
+    left: 30%;
+    font-size: 16px;
+    z-index: 9999;
+    font-family: "Nunito", sans-serif;
+    height: auto;
+    width: auto;
+}
 }

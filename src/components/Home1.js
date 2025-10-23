@@ -9,6 +9,7 @@ const Home1 = () => {
     const [showContactForm, setShowContactForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [showPopup, setShowPopup] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false); // ✅ new state
 
     // Contact form fields
     const [contactData, setContactData] = useState({
@@ -35,7 +36,9 @@ const Home1 = () => {
 
     const handleContactSubmit = (e) => {
         e.preventDefault();
-        setShowPopup(true);
+
+        // ✅ Disable the button immediately
+        setIsSubmitting(true);
 
         const templateParams = {
             selectedPerson,
@@ -56,17 +59,20 @@ const Home1 = () => {
                 templateParams,
                 "brTOInCWBJlK4szm_" // Public key
             )
-            .then(
-                () => {
-                    window.location.href =
-                        window.location.origin + window.location.pathname;
-                  
-                },
-                (error) => {
-                    alert("Email send failed:", error);
-                    setShowPopup(false);
-                }
-            );
+            .then(() => {
+                // ✅ Show popup after successful send
+                setShowPopup(true);
+
+                // ✅ Wait briefly, then reload
+                setTimeout(() => {
+                    window.location.href = window.location.origin + window.location.pathname;
+                }, 1000);
+            })
+            .catch((error) => {
+                console.error("Email send failed:", error);
+                alert("Failed to send message. Please try again.");
+                setIsSubmitting(false); // re-enable if failed
+            });
     };
 
     return (
@@ -74,8 +80,7 @@ const Home1 = () => {
             <div className="home-left">
                 <h2>Attention: Roblox & Discord Abuse Victims</h2>
                 <p className="home-left-heading">
-                    Online Predators Are Targeting Kids Who Play Roblox Using Discord –
-                    Could Your Child Be at Risk?
+                    Online Predators Are Targeting Kids Who Play Roblox Using Discord – Could Your Child Be at Risk?
                 </p>
                 <p className="home-left-subheading">
                     If your child plays <strong>Roblox</strong> and uses <strong>Discord</strong>,
@@ -84,7 +89,10 @@ const Home1 = () => {
             </div>
 
             <div className="home-right">
-                <form className="home-form" onSubmit={!showContactForm ? handleSubmit : handleContactSubmit}>
+                <form
+                    className="home-form"
+                    onSubmit={!showContactForm ? handleSubmit : handleContactSubmit}
+                >
                     {!showContactForm ? (
                         <>
                             <div className="home-form-heading">
@@ -174,19 +182,22 @@ const Home1 = () => {
                                 <input name="phone" type="tel" required placeholder="Enter your phone number" onChange={handleContactChange} />
                                 <input name="state" type="text" required placeholder="Enter your state" onChange={handleContactChange} />
 
-                                <button type="submit" className="green-btn">
-                                    Connect with Us!
+                                <button
+                                    type="submit"
+                                    className="green-btn"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? "Submitting..." : "Connect with Us!"}
                                 </button>
                             </div>
                         </>
                     )}
                 </form>
             </div>
+
             {showPopup && (
                 <div className="popup-message">
                     Message Submitted. Our team will connect you soon.
-                    <br />
-                    Redirecting
                 </div>
             )}
         </div>
